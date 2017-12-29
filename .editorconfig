@@ -1,5 +1,6 @@
 # Editor configuration, see http://editorconfig.org
 root = true
+node_modules/
 
 [*]
 charset = utf-8
