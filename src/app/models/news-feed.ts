@@ -1,3 +1,5 @@
+
+
 export interface NewsFeed {
     source: {
         id: String,
@@ -7,6 +9,6 @@ export interface NewsFeed {
     title: String;
     description: String;
     url: String;
-    urlToImage: String;
+    urlToImage: ImageData;
     publishedAt: String;
 }

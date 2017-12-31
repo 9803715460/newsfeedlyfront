@@ -1,3 +1,31 @@
-<p>
-  search works!
-</p>
+<table>
+  <tr>
+    <td>Search</td>
+    <td><input type="text" #keyword /> </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div *ngFor="let newsSource of newsSources">
+        <label>
+          <input type="checkbox"
+                  name="sources"
+                  value="{{newsSource.value}}"
+                  [(ngModel)]="newsSource.checked" />
+                  {{newsSource.name}}
+        </label>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+    </td>
+    <td>
+      <input type="button" (click)="getNews(keyword.value)" value="Get News" />
+    </td>
+  </tr>
+</table>
+
+<div *ngFor="let news of newsFeed">
+  {{news.title}}
+</div>

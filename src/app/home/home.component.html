@@ -1,6 +1,15 @@
-<h1>News Feed</h1>
-<ul>
-  <li *ngFor="let item of newsFeed">
+
+
+  <div *ngFor="let item of newsFeed | async" (click)="onSelect(item)"
+  [class.selected]="item === selectedNews">
     {{item.title}}
-  </li>
-</ul>
+    <img src="{{item.urlToImage}}" />
+</div>
+<div *ngIf="selectedNews">
+ 
+  <h2>{{ selectedNews.name | uppercase }} </h2>
+  <div><span>id: </span>{{selectedNews.description}}</div>
+  
+ 
+</div>
+

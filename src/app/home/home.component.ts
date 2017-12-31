@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsFeedService } from '../services/news-feed.service';
 import { NewsFeed } from '../models/news-feed';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,20 @@ export class HomeComponent implements OnInit {
 
   constructor(private newsService: NewsFeedService) { }
 
-  newsFeed: NewsFeed[]
+  newsFeed: Observable<NewsFeed[]>;
+  selectedNews:NewsFeed;
 
   ngOnInit() {
     this.getNewsFeed();
   }
 
   getNewsFeed() {
-    this.newsService
-      .getNewsFeed()
-      .subscribe(news => {
-        this.newsFeed = news
-        console.log(news);
-      });
+    this.newsFeed = this.newsService.getNewsFeed();
+  }
+  
+  onSelect(item: NewsFeed): void {
+    this.selectedNews = item;
   }
 }
+
+
