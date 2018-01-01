@@ -43,7 +43,9 @@ export class SearchComponent implements OnInit {
   }
 
   getSelectedOptions() {
-    return this.newsSources.filter(source => source.checked).map(source => source.value);
+    return this.newsSources.filter(
+      source => source.checked)
+      .map(source => source.value);
   }
 
 }
