@@ -12,20 +12,26 @@ export class HomeComponent implements OnInit {
 
   constructor(private newsService: NewsFeedService) { }
 
-  newsFeed: Observable<NewsFeed[]>;
+  newsFeed: NewsFeed[];
   selectedNews:NewsFeed;
 
   ngOnInit() {
     this.getNewsFeed();
   }
 
+  viewArticle(item : NewsFeed) {
+    window.open(item.url.toString(), "_blank");
+  }
+
   getNewsFeed() {
-    this.newsFeed = this.newsService.getNewsFeed();
+    this.newsService.getNewsFeed()
+    .subscribe(newsfeed => {
+      this.newsFeed = newsfeed;
+    });
   }
   
-  onSelect(item: NewsFeed): void {
-    this.selectedNews = item;
-  }
+
+  
 }
 
 

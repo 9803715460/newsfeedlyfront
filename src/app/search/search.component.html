@@ -1,31 +1,32 @@
-<table>
-  <tr>
-    <td>Search</td>
-    <td><input type="text" #keyword /> </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <div *ngFor="let newsSource of newsSources">
-        <label>
-          <input type="checkbox"
-                  name="sources"
-                  value="{{newsSource.value}}"
-                  [(ngModel)]="newsSource.checked" />
-                  {{newsSource.name}}
-        </label>
+<h2>Search</h2>
+<div class="col-md-12">
+  <input class="form-control" placeholder="Enter keywords..." type="text" #keyword />
+  <div>
+    <label *ngFor="let newsSource of newsSources" class="right-margin-custom">
+      <input type="checkbox" name="sources" value="{{newsSource.value}}" [(ngModel)]="newsSource.checked"  /> {{newsSource.name}}
+     
+    </label>
+    
+    <label> <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"/>Select All</label>
+      
+      
+  </div>
+  <input class="btn btn-success" type="button" (click)="getNews(keyword.value)" value="Get News" />
+</div>
+<div class="col-md-12">
+  <div *ngFor="let item of newsFeed" class="row col-md-12">
+    <div class="col-md-4" (click)="viewArticle(item)">
+      <img src="{{item.urlToImage}}" class="img img-responsive" />
+      <div class="well well-info">
+        <span class="text-info">Source: {{item.source.name}}</span>
+        <br />
+        <span class="text-info">Author: {{item.author}}</span>
       </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-
-    </td>
-    <td>
-      <input type="button" (click)="getNews(keyword.value)" value="Get News" />
-    </td>
-  </tr>
-</table>
-
-<div *ngFor="let news of newsFeed">
-  {{news.title}}
+    </div>
+    <div class="col-md-8">
+      <h2>{{item.title}}</h2>
+      <p>{{item.description}}</p>
+      <a class="btn btn-success" target="_blank" href="{{item.url}}">Read Full Article here</a>
+    </div>
+  </div>
 </div>

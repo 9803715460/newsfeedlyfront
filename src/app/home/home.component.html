@@ -1,15 +1,15 @@
-
-<body>
-    <div class="container" id="container">
-        <div  *ngFor="let item of newsFeed | async" class="gallery">
-            <a tabindex="1">  <img src="{{item.urlToImage}}"/></a>
-             <span class="close"></span>
+<div   *ngFor="let item of newsFeed" class="row col-md-12">
+    <div class="col-md-4" (click)="viewArticle(item)">
+        <img src="{{item.urlToImage}}" class="img img-responsive" />
+        <div class="well well-info">
+            <span class="text-info">Source: {{item.source.name}}</span>
+            <br />
+            <span class="text-info">Author: {{item.author}}</span>
         </div>
-        <h1>{{time.title}}</h1>
     </div>
-    <footer>
-        <h2>Pure CSS3 photo gallery</h2>
-        <a href="https://www.script-tutorials.com/how-to-do-pure-css3-photo-gallery/" class="stuts">Back to original tutorial on <span>Script Tutorials</span></a>
-    </footer>
-</body>
-
+    <div class="bg-img" class="col-md-8">
+        <h2>{{item.title}}</h2>
+        <p >{{item.description}}</p>
+        <a class="btn btn-success" target="_blank" href="{{item.url}}">Read Full Article here</a>
+    </div>
+</div>

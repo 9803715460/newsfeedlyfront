@@ -10,6 +10,9 @@ import { NewsFeed } from '../models/news-feed';
 export class SearchComponent implements OnInit {
 
   newsFeed: NewsFeed[];
+  selectedAll: any;
+
+  bgImg = '../images/a.jpg';
 
   newsSources = [
     { name: "ABC NEWS", value: "abc-news", checked: false },
@@ -20,12 +23,22 @@ export class SearchComponent implements OnInit {
     { name: "Buzzfeed", value: "buzzfeed", checked: false },
     { name: "CNBC", value: "cnbc", checked: false },
     { name: "CNN", value: "cnn", checked: false }
+    
   ];
 
   constructor(private newsService: NewsFeedService) { }
 
   ngOnInit() {
 
+  }
+  selectAll() {
+    for (var i = 0; i < this.newsSources.length; i++) {
+      this.newsSources[i].checked = this.selectedAll;
+    }
+  }
+
+  viewArticle(item : NewsFeed) {
+    window.open(item.url.toString(), "_blank");
   }
 
   getNews(value) {
@@ -43,9 +56,7 @@ export class SearchComponent implements OnInit {
   }
 
   getSelectedOptions() {
-    return this.newsSources.filter(
-      source => source.checked)
-      .map(source => source.value);
+    return this.newsSources.filter(source => source.checked).map(source => source.value);
   }
 
 }
