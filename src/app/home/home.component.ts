@@ -15,13 +15,17 @@ export class HomeComponent implements OnInit {
   newsFeed: NewsFeed[];
   selectedNews:NewsFeed;
 
+  
+
   ngOnInit() {
     this.getNewsFeed();
+   
   }
 
   viewArticle(item : NewsFeed) {
     window.open(item.url.toString(), "_blank");
   }
+
 
   getNewsFeed() {
     this.newsService.getNewsFeed()
@@ -29,8 +33,6 @@ export class HomeComponent implements OnInit {
       this.newsFeed = newsfeed;
     });
   }
-  
-
   
 }
 

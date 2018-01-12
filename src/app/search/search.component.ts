@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   newsFeed: NewsFeed[];
   selectedAll: any;
 
-  bgImg = '../images/a.jpg';
+  
 
   newsSources = [
     { name: "ABC NEWS", value: "abc-news", checked: false },

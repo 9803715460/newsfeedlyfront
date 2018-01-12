@@ -10,6 +10,9 @@ import { NewsFeedService } from './services/news-feed.service';
 import { DetailComponent } from './detail/detail.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CarouselModule } from 'ngx-bootstrap';
+
+
 
 
 @NgModule({
@@ -17,13 +20,15 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     HomeComponent,
     SearchComponent,
-    DetailComponent
+    DetailComponent,
+    
 ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule.forRoot()
   ],
   providers: [NewsFeedService],
   bootstrap: [AppComponent]

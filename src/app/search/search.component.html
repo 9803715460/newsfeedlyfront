@@ -1,3 +1,4 @@
+
 <h2>Search</h2>
 <div class="col-md-12">
   <input class="form-control" placeholder="Enter keywords..." type="text" #keyword />
@@ -13,6 +14,12 @@
   </div>
   <input class="btn btn-success" type="button" (click)="getNews(keyword.value)" value="Get News" />
 </div>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white" >
 <div class="col-md-12">
   <div *ngFor="let item of newsFeed" class="row col-md-12">
     <div class="col-md-4" (click)="viewArticle(item)">
@@ -29,4 +36,5 @@
       <a class="btn btn-success" target="_blank" href="{{item.url}}">Read Full Article here</a>
     </div>
   </div>
+</div>
 </div>
